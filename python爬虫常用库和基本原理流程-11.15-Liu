@@ -1,0 +1,40 @@
+1、安装requests库：requests是python实现的简单易用的HTTP库，使用起来比urllib简洁很多。因为是第三方库，所以使用前需要cmd安装
+pip install requests，安装完成后import一下，正常则说明可以开始使用了。
+    1.1、requests.get()用于请求目标网站，类型是一个HTTPresponse类型
+    1.2、基本用法：
+     import requests
+
+            requests.get('http://httpbin.org/get')
+            requests.post('http://httpbin.org/post')
+            requests.put('http://httpbin.org/put')
+            requests.delete('http://httpbin.org/delete')
+            requests.head('http://httpbin.org/get')
+            requests.options('http://httpbin.org/get')
+      带参数的GET请求：第一种直接将参数放在url内。
+      requests.get(http://httpbin.org/get?name=gemey&age=22)
+      另一种先将参数填写在dict中，发起请求时params参数指定为dict
+2、urllib库是Python自带的标准库，无需安装，直接可以用。提供了如下功能：网页请求，响应获取，代理和cookie设置
+异常处理，URL解析。
+      2.1urllib.request.urlopen(url,data=None,[timeout,]*,cafile=None,capath=None,cadefault=False,context=None) 
+           #url:访问的网址 #data:额外的数据，如header，form data 
+3、selenium库是用来驱动浏览器的一个库，主要用于做自动化测试，可以直接驱动浏览器拿到js渲染之后的内容。由于本机
+使用的是firefox浏览器，所以浏览器驱动器应该下载geckodriver到python路径下进行使用，但由于此种方式在使用时经常
+会弹出爬取界面，不方便，所以没有采用此种方式进行研究。
+4、采用phantomjs.exe则不会出现浏览器弹出的问题，但也需把phantomjs的路径存在path中。
+5、lxml对xpath进行解析，是一种高效、快捷的解析方式。
+6、beautifulsoup依赖于lxml库  eg:from bs4 import Beautifulsoup，是一个网页解析库。
+7、pyquery更加较beautifulsoup更方便，也是以恶搞网页解析库。
+
+
+8、存储库 :pymysql
+9、pymongo.
+10、redis.
+
+
+11、爬虫原理：
+爬虫：请求网站并提取数据的自动化程序。
+基本流程：11.1发起请求--通过HTTP库向目标站点发起请求，即发送一个Requests，请求可以包好额外的headers等消息，等待服务器
+响应。
+                 11.2获取响应内容---服务器正常响应，回馈一个Response，Response的内容便是所要获取的页面内容。
+                 11.3解析内容--得到内容可能位html，可以用正则表达式、网页、解析库进行解析
+                 11.4保存数据--保存形式多种多样。
