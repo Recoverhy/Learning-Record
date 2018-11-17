@@ -1,0 +1,12 @@
+1、beautifulsoup的find()和findAll()---通过标签的不同属性轻松过滤HTML页面，查找需要的标签组或单个标签。
+findAll(tag,attributes,recursive,text,limit,keywords)    find(tag,attributes,recursive,text,keywords)
+tag--标签  attributes--字典，封装若干属性和对应属性值  recursive--布尔值，确认抓取HTML文档标签结构的层信息 text--用标签文本
+内容去匹配  limit--限制项数，find默认为limit==1时情况  keyword--容易因为保留字产生语法错误，可以通过class_避免错误
+，且keyword能为tag添加一个"与"关系的过滤器来简化工作。
+2、beautifulsoup库的四个对象为beautifulsoup对象、标签Tag对象、NavigableString对象--用来表示标签里的文字、
+Comment对象--用来查找HTML文档的注释标签。
+3、正则表达式--返回符合规则的字符串，忽略不符合规则的。
+4、导航树通过标签在文档中位置来查找标签，将整个HTML页面视为一个导航树，标签类型主要分为--子标签（children)，
+后代标签(descendants)、兄弟标签（next_siblings）、父标签(parents)
+5、Lambda表达式本质上是一个函数，可以作为其他函数的变量使用，也就是说，一个函数不是定义成f(x,y)而是f(g(x),y)
+或f(g(x),h(x))的形式。
