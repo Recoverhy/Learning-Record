@@ -1,0 +1,27 @@
+1、Requests--请求头、请求URL、请求体（一般存在post请求方法中)、请求方式(post、get）
+2、Response--响应状态、响应头、响应体
+3、能抓怎样的数据--HTML文档、json文档；二进制格式的图片、视频；其他。
+4、解析方式--直接处理、BeautifulSoup、PyQuery、正则表达式、Json解析、XPath
+5、解决javaScript渲染的问题--分析Ajax请求，Selenium/WebDriver、Splash、PyV8
+6、保存数据--6.1文本 6.2关系型数据库 6.3非关系型数据库 6.4二进制文件
+
+eg:举例通过链接从当前页面跳到另外相关页面进行数据的抓取
+from urllib.requests import urlopen
+from bs4 import BeautifulSoup
+import random
+import datetime
+import re
+random.seed(datetime.datetime.now())
+def getLinks(articleUrl):
+html=urlopen("http://en.wikipedia.org/wiki/"+articleUrl)
+bsobj=BeautifulSoup(html)
+   return bsobj.find("div",{"id":"bodyContent"}).findAll("a",href=re.compile("^(/wiki/)((?!:).)*$))
+links=getLinks("/wiki/Kevin_Bacon)
+while len(links)>0:
+     newArticle=links[random.randint(0,len(links)-1].attrs["href"]
+     print(newArticle)
+     links=getLinks(newArticle)
+if 'href' in link.attrs:
+     print(link.attrs['href'])
+导入需要的Python库之后，程序首先要做的是用系统当前时间生成一个随机数生成器。这样保证每
+次程序运行时，维基百科词条的选择都是一个全新的随机路径。
