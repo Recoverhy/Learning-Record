@@ -1,0 +1,78 @@
+1、urlparse
+from urllib.parse import urlparse
+result=urlparse('http://www.baidu.com/index.com;user?id=5#comment')
+print(type(result),result)
+
+from urllib.parse import urlparse
+result=urlparse('www.baidu.com/index.com;user?id=5#comment',scheme='https')
+print(type(result)
+
+from urllib.parse import urlparse
+result=urlparse('http://www.baidu.com/index.com;user?id=5#comment',allow_fragments=False)
+print(result)
+
+from urllib.parse import urlunparse
+data=['http','www.baidu.com','index.html','user','a=6','comment']
+print(urlunparse(data))
+
+from urllib.parse import urlencode
+params={
+        'name':'germeny',
+        'age':22
+        }
+base_url='http://www.baidu.com?'
+url=base_url+urlencode(params)
+print(url)
+
+
+2、request
+import requests
+import json
+response=requests.get("http://httpbin.org/get")
+print(type(response.text))
+print(response.json())
+
+import requests
+response=requests.get("http://github.com/favicon.ico")
+with open('favicon.ico','wb') as f:
+    f.write(resopnse.content)
+    f.close()
+ 
+import requests
+response=requests.get("http://www.baidu.com")
+exit() if not response.status_code==requests.codes.ok else print ('Print Successfully!')
+
+import requests
+files={'files':open('favicon.ico','rb')}
+response=requests.post("http://httpbin/org/post",files=files)
+print(response.text)
+
+import requests
+s=requests.Session()
+s.get('http://httpbin.org/cookies/set/numer/12345678')
+response=s.get('http://httpbin.org/cookies')
+print(response.text)
+
+#避免网址安全问题出错
+import requests
+response=requests.get('http://www.12306.cn',verify=False)
+print(response.status_code)
+
+import requests
+from requests.packages import urllib3
+urllib3.disable_warnings()
+response=requests.get('http://www.12306.cn',verify=False)
+print(response.status_code)
+
+import requests
+from requests.exceptions import ReadTimeout,HTTPError,RequestException
+try:
+    response=requests.get("http://httpbin.org/get",timeout=0.5)
+    print(response.status_code)
+except ReadTimeout:
+    print('Timeout')
+except HttpTimeout:
+    print('Http Error')
+except RequestException:
+    print('Error')
+    
