@@ -1,0 +1,58 @@
+#常规匹配
+import re
+str='Hello 1234 kssk Demo'
+result=re.match('^Hello\s\d{4}\s.*\sDemo$',str)
+print(result)
+
+#泛匹配
+import re
+str='Hello 1234 kssk Demo'
+result=re.match('^Hello.*\sDemo$',str)
+print(result)
+print(result.group())
+
+#匹配目标
+import re
+str='Hello 1234 kssk Demo'
+result=re.match('^Hello\s(\d+)\skssk\sDemo$',str)
+print(result)
+print(result.group())
+#目标匹配,贪婪匹配
+import re
+str='Hello 1234 kssk Demo'
+result=re.match('^H.*(\d+).*Demo$',str)
+print(result)
+print(result.group(1))
+#非贪婪模式
+import re
+str='Hello 1234 kssk Demo'
+result=re.match('^H.*?(\d+).*Demo$',str)
+print(result)
+print(result.group(1))
+
+#匹配模式添加到换行
+import re 
+str='Hello 1234 kssk Demo'
+result=re.match('^H.*?(\d+).*?Demo$',str,re.S)
+print(result)
+print(result.group(1))
+
+#转义
+import re
+str='abskc$'
+result=re.match('abskc\$',str)
+print(result)
+print(result.group(1))
+
+#search---不需要限定头部
+import re 
+str='Hello a1234 kssk Demo'
+result=re.search('a.*?(\d+).*?Demo$',str,re.S)
+print(result)
+print(result.group(1))
+
+
+
+
+
+
