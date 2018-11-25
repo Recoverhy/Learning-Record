@@ -1,0 +1,120 @@
+#字符串初始化
+html='''
+<div id="z">
+<ul class="a">
+<li class="aa cd"><a href="link1.html"><span class="aaa">first item</li>
+<li class="ab"><a href="link2.html"><span class="aba">second item</li>
+</ul>
+</div>'''
+from pyquery import PyQuery as pq
+doc=pq(html)
+print(doc('head'))
+
+#url初始化
+from pyquery import PyQuery as pq
+doc=pq(url='http://www.baidu.com')
+print(doc('head'))
+
+#文件初始化
+from pyquery import PyQuery as pq
+doc=pq(filename='demo.html')
+print(doc('li'))
+
+#css选择器
+html='''
+<div id="z">
+<ul class="a">
+<li class="aa cd"><a href="link1.html"><span class="aaa">first item</li>
+<li class="ab"><a href="link2.html"><span class="aba">second item</li>
+</ul>
+</div>'''
+from pyquery import PyQuery as pq
+doc=pq(html)
+print(doc('#z .a li'))
+          
+#子元素
+html='''
+<div id="z">
+<ul class="a">
+<li class="aa cd"><a href="link1.html"><span class="aaa">first item</li>
+<li class="ab"><a href="link2.html"><span class="aba">second item</li>
+</ul>
+</div>'''
+from pyquery import PyQuery as pq
+doc=pq(html)
+items=doc('.a')
+print(type(items))
+print(items.find('li'))
+
+#子元素，父元素
+
+#遍历
+html='''
+<div id="z">
+<ul class="a">
+<li class="aa cd"><a href="link1.html"><span class="aaa">first item</li>
+<li class="ab"><a href="link2.html"><span class="aba">second item</li>
+</ul>
+</div>'''
+from pyquery import PyQuery as pq
+doc=pq(html)
+items=doc('li').items
+for item in items:
+    print(item)
+    
+#获取消息
+    
+#DOM操作
+html='''
+<div id="z">
+<ul class="a">
+<li class="aa cd"><a href="link1.html"><span class="aaa">first item</li>
+<li class="ab"><a href="link2.html"><span class="aba">second item</li>
+</ul>
+</div>'''
+from pyquery import PyQuery as pq
+doc=pq(html)
+li=doc('.aa.cd')
+print(li)
+li.removeClass('cd')
+print(li)
+li.addClass('cd')
+print(li)
+
+#attr,css
+html='''
+<div id="z">
+<ul class="a">
+<li class="aa cd"><a href="link1.html"><span class="aaa">first item</li>
+<li class="ab"><a href="link2.html"><span class="aba">second item</li>
+</ul>
+</div>'''
+from pyquery import PyQuery as pq
+doc=pq(html)
+li=doc('.aa.cd')
+print(li)
+li.attr('name','link')
+print(li)
+li.css('font-size','14px')
+print(li)
+
+#伪类标签
+html='''
+<div id="z">
+<ul class="a">
+<li class="aa cd"><a href="link1.html"><span class="aaa">first item</li>
+<li class="ab"><a href="link2.html"><span class="aba">second item</li>
+</ul>
+</div>'''
+from pyquery import PyQuery as pq
+doc=pq(html)
+li=doc('li:first-child')
+print(li)
+li=doc('li:last-child')
+print(li)
+li=doc('li:nth-child(2)')
+print(li)
+li=doc('li:gt(2)')
+print(li)
+li=doc('li:nth-child(2n)')
+print(li)
