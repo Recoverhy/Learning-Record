@@ -1,0 +1,49 @@
+result=re.findall('<li.*?>\s*?(<a.*?>)?(\w+)(</a>)?\s*?</li>',html,re.S)
+print(result)
+
+#re.sub替换
+import re
+content='adhwwkj 2344 ddd'
+result=re.sub('2344','',content)
+print(result)
+
+import re
+content='adhwwkj 2344 ddd'
+result=re.sub('(\d+)',r'\1 555',content)
+print(result)
+
+import requests
+import re
+content=requests.get('http://category.dangdang.com/cp01.54.00.00.00.00.html').text
+#print(content)
+pattern=re.compile('<li.*?>\s*?<a.*?title="(.*?)".*?href="(.*?)".*?>.*?</a>.*?</li>',re.S)
+results=re.findall(pattern,content)
+for result in results:
+    title,href=result
+    title=re.sub('\s','',title)
+    href=re.sub('\s','',href)
+    print(title,href)
+
+from bs4 import BeautifulSoup
+html="<html><head><title>say something</title></head><body>
+<p class="title" name="say"><b>say something</b></p>
+<p class="something">say something i am giving up on you</p>
+<a herf="http://www.baidu.com" class="baidu" id="class1"><!-----Else------></a>,
+<a herf="http://www.sina.com.cn" class="sina" id="class2">xinlang</a>and
+<a herf="http://www.toobao.com" class="baidu" id="class3">taobao</a>;"
+              
+soup=BeautifulSoup(html,'lxml')
+#补全代码
+print(soup.prettify)
+print(soup.title.string)
+print(soup.prettify)
+#p.contents 包含所有子孙，返回一个列表
+#p.children 以迭代器模式存储，必须遍历才能获取
+#p.descendants 会将子节点的子节点也分开作为一项存储
+
+#p.parent输出父节点
+#p.parents所有的祖先节点
+print(list(enumerate(soup.a.parents)))
+
+#p.next_siblings
+#p.previous_siblings
